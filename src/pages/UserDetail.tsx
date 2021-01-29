@@ -4,8 +4,12 @@ import {UserType} from "../interface/user";
 import axios from "axios";
 
 const UserDetail = (props: any) => {
+    const userId = props.match.params.id;
     const [user, setUser] = useState<UserType>({
-        name: '',
+        first_name: '',
+        last_name: '',
+        full_name: '',
+        image_url: '',
         email: ''
     });
 
@@ -14,7 +18,7 @@ const UserDetail = (props: any) => {
     }, [])
 
     const getUser = async () => {
-        const response = await axios.get(`https://sakura.test/api/users/${props.match.params.id}`)
+        const response = await axios.get(`https://sakura.test/api/users/${userId}`)
 
         setUser(response.data.data);
     }
@@ -23,7 +27,7 @@ const UserDetail = (props: any) => {
             <div id="profile"
                  className="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
                 <div className="p-4 md:p-12 text-center lg:text-left">
-                    <h1 className="text-3xl font-bold pt-8 lg:pt-0">{user.name}</h1>
+                    <h1 className="text-3xl font-bold pt-8 lg:pt-0">{user.full_name}</h1>
                     <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
                     <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
                         <svg className="h-4 fill-current text-green-700 pr-4" xmlns="http://www.w3.org/2000/svg"
@@ -44,10 +48,17 @@ const UserDetail = (props: any) => {
                     <p className="pt-8 text-sm">Totally optional short description about yourself, what you do and so
                         on.</p>
 
-                    <div className="pt-12 pb-8">
-                        <button className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
-                            DMを送る
-                        </button>
+                    <div className="flex">
+                        <div className="pt-12 pb-8 mx-2">
+                            <button className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+                                DMを送る
+                            </button>
+                        </div>
+                        <div className="pt-12 pb-8 mx-2">
+                            <a href={`/users/${userId}/posts`} className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+                                投稿を見る
+                            </a>
+                        </div>
                     </div>
 
                     <div
@@ -109,7 +120,7 @@ const UserDetail = (props: any) => {
 
             <div className="w-full lg:w-2/5">
 
-                <img src="https://source.unsplash.com/MP0IUfwrn0A"
+                <img src={user.image_url}
                      className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block"/>
 
             </div>

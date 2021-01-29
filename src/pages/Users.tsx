@@ -2,11 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import User from "../components/users/User";
 import '../interface/user';
-
-interface UserType {
-    name: string;
-    email: string;
-}
+import { UserType } from '../interface/user';
 
 const Users: React.FC = () => {
     const [users, setUsers] = useState<any>([]);
@@ -30,13 +26,13 @@ const Users: React.FC = () => {
                         User
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Rol
+                        Name
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Created at
+                         Email
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Status
+
                     </th>
                 </tr>
                 </thead>
