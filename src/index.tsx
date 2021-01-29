@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './tailwind.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Nav from "./components/Nav";
+import './axios';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <div className="bg-gray-100 font-family-karla flex">
+            <Nav/>
+            <App/>
+        </div>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
