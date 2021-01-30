@@ -10,7 +10,7 @@ const AllPosts = () => {
     }, []);
 
     const getAllPosts = async () => {
-        const response = await axios.get('https://sakura.test/api/posts');
+        const response = await axios.get('/posts');
 
         setAllPosts(response.data.data);
     }

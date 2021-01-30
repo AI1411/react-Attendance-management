@@ -10,7 +10,7 @@ const PostCreate = (props: any) => {
     // const [isRedirect, setIsRedirect] = useState(false);
 
     const storePost = () => {
-        axios.post(`https://sakura.test/api/posts`, {
+        axios.post(`/posts`, {
             title: title,
             body: body,
             user_id: userId,

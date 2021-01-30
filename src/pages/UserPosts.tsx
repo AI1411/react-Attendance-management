@@ -11,7 +11,7 @@ const UserPosts = (props: any) => {
     }, []);
 
     const getPosts = async () => {
-        const response = await axios.get(`https://sakura.test/api/users/${userId}/posts`);
+        const response = await axios.get(`/users/${userId}/posts`);
 
         setPosts(response.data.data);
     }

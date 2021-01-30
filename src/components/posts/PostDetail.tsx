@@ -16,7 +16,7 @@ const PostDetail = (props: any) => {
     }, []);
 
     const getPostDetail = async () => {
-        const response = await axios.get(`https://sakura.test/api${url}`);
+        const response = await axios.get(`${url}`);
 
         setPost(response.data.data);
     }

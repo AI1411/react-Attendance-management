@@ -18,7 +18,7 @@ const UserDetail = (props: any) => {
     }, [])
 
     const getUser = async () => {
-        const response = await axios.get(`https://sakura.test/api/users/${userId}`)
+        const response = await axios.get(`/users/${userId}`)
 
         setUser(response.data.data);
     }

@@ -6,6 +6,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Nav from "./components/Nav";
 import './axios';
+import axios from "axios";
+
+axios.defaults.baseURL = 'https://sakura.test/api';
 
 ReactDOM.render(
     <React.StrictMode>

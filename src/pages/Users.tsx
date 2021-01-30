@@ -12,7 +12,7 @@ const Users: React.FC = () => {
     }, []);
 
     const getUsers = async () => {
-        const response = await axios.get('https://sakura.test/api/users');
+        const response = await axios.get('/users');
         const data = response.data.data;
 
         setUsers(data);
