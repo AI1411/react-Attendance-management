@@ -55,9 +55,9 @@ const UserDetail = (props: any) => {
                             </button>
                         </div>
                         <div className="pt-12 pb-8 mx-2">
-                            <a href={`/users/${userId}/posts`} className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+                            <button onClick={() => window.location.href = `/users/${userId}/posts`} className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
                                 投稿を見る
-                            </a>
+                            </button>
                         </div>
                     </div>
 
