@@ -7,28 +7,46 @@ import Wrapper from '../components/layouts/Wrapper';
 
 const Users: React.FC = () => {
     const [users, setUsers] = useState<any>([]);
+    const [branches, setBranches] = useState<any>([]);
     const [query, setQuery] = useState<any>('');
+    const [branchId, setBranchId] = useState<any>('');
 
     useEffect(() => {
-        getUsers(query);
+        getUsers(query, branchId);
+        getBranches();
     }, []);
 
-    const getUsers = async (query: string) => {
-        const response = await axios.get(`/users?name=${query}`);
+    const getUsers = async (query: string, branchId: string) => {
+        const response = await axios.get(`/users?name=${query}&branchId=${branchId}`);
         const data = response.data.data;
 
         setUsers(data);
     };
 
+    const getBranches = async () => {
+        const response = await axios.get(`/branches`);
+
+        setBranches(response.data.data);
+    }
+
     return (
         <Wrapper>
             <div className="relative w-full flex flex-col h-screen overflow-y-hidden my-5 mx-5">
-                <div className="pt-2 relative text-gray-600">
+                <div className="pt-2 relative text-gray-600 flex">
                     <input
                         className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
                         type="search" name="search" placeholder="Search"
-                        onChange={e => getUsers(e.target.value)}
+                        onChange={e => getUsers(e.target.value, '')}
                     />
+                    <select
+                        className="form-select ml-2 block border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                        onChange={e => getUsers('', e.target.value)}
+                    >
+                        <option value="">-----</option>
+                        {branches.map((branch: any, index: number) =>
+                            <option value={branch.id} key={index}>{branch.name}</option>
+                        )}
+                    </select>
                 </div>
                 <table className="min-w-full leading-normal">
                     <thead>
