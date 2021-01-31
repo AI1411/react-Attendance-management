@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Post from "../../components/posts/Post";
 import axios from "axios";
+import Wrapper from "../../components/layouts/Wrapper";
 
 const AllPosts = () => {
     const [allPosts, setAllPosts] = useState([]);
@@ -15,7 +16,7 @@ const AllPosts = () => {
         setAllPosts(response.data.data);
     }
     return (
-        <div>
+        <Wrapper>
             <section className="py-12">
                 <div className="container mx-auto">
                     <div className="flex items-center">
@@ -30,7 +31,7 @@ const AllPosts = () => {
                     </div>
                 </div>
             </section>
-        </div>
+        </Wrapper>
     );
 };
 

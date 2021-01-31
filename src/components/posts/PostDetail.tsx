@@ -21,6 +21,7 @@ const PostDetail = (props: any) => {
         setPost(response.data.data);
     }
     return (
+
         <div
             className="flex bg-white shadow-lg rounded-lg mx-4 md:mx-auto my-32 max-w-md md:max-w-2xl">
             <div className="flex items-start px-4 py-6">

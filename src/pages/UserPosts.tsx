@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import Post from '../components/posts/Post';
+import Wrapper from "../components/layouts/Wrapper";
 
 const UserPosts = (props: any) => {
     const userId = props.match.params.id;
@@ -16,7 +17,7 @@ const UserPosts = (props: any) => {
         setPosts(response.data.data);
     }
     return (
-        <div>
+        <Wrapper>
             <section className="py-12">
                 <div className="container mx-auto">
                     <div className="flex items-center">
@@ -34,7 +35,7 @@ const UserPosts = (props: any) => {
                     </div>
                 </div>
             </section>
-        </div>
+        </Wrapper>
     );
 };
 

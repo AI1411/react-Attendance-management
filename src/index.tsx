@@ -4,16 +4,15 @@ import './index.css';
 import './tailwind.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Nav from "./components/Nav";
 import './axios';
 import axios from "axios";
 
 axios.defaults.baseURL = 'https://sakura.test/api';
+axios.defaults.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
 
 ReactDOM.render(
     <React.StrictMode>
-        <div className="bg-gray-100 font-family-karla flex">
-            <Nav/>
+        <div>
             <App/>
         </div>
     </React.StrictMode>,
